@@ -1,7 +1,10 @@
-# Getting Started with Create React App:
 # ReactJS Framework 18 - Architecture - CRUD Example App -Axios-- Json-Server -Hooks
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## CT
+
+
+
 
 ## Available Scripts
 
@@ -13,13 +16,25 @@ Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 
+// How create Components Manually+using CLi
+
+// Uses of Hooks {Use State+Use Effect}
+
+// font icons react 
 
 
 
+npm i --save @fortawesome/fontawesome-svg-core
+npm install --save @fortawesome/free-solid-svg-icons
+npm install --save @fortawesome/react-fontawesome
 
 
 
+// delete update state 
 
+// Use Rest Api : Json Server
+
+npm install json-server
 
 
 

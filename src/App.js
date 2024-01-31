@@ -17,11 +17,8 @@ useEffect(()=>{
  let path=window.location.pathname;
  path=path.slice(1,path.length)
  setCurrentRoute(path)
-
-
+ 
 })
-
-
 
   return (
 <BrowserRouter>
@@ -44,16 +41,13 @@ useEffect(()=>{
                       getCurrentRoute===action ? "nav-link text-dark ":"nav-link"
                     }
                     
-                    
                     aria-current="page" to={"/"+action}>
                       {action}
                     </Link>
                   </li>
 
                   ))}
-                  
-                  
-                 
+                
                 </ul>
             
               </div>
@@ -63,8 +57,6 @@ useEffect(()=>{
 
 <Route path="/Home" element={<Home/>}> </Route>
 <Route path="/Product" element={<Product/>}> </Route>
-
-
 </Routes>
 </BrowserRouter>
 
