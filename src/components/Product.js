@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import '../App.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faCheck,faCircle,faTrash} from "@fortawesome/free-solid-svg-icons";
+import {faCheck,faCircle,faTrash, faXmark} from "@fortawesome/free-solid-svg-icons";
 
 
 
@@ -24,7 +24,7 @@ function Product() {
 
   const newProducts=products.map(prd=>{
    
-    if(prd.id==product.id){
+    if(prd.id===product.id){
       prd.checked =  !prd.checked;
     }
  return prd;
@@ -41,10 +41,6 @@ function Product() {
       setProducts(newProducts)
 
   }
-
-  
-
-
 
   return (
     
@@ -68,11 +64,12 @@ function Product() {
                   <td>
                   <button 
                   onClick={()=>handleCheckProduct(product)}
-                  className='btn btn-outline-success mx-2 '
+                  className={product.checked ? 'btn btn-outline-success mx-2 ' :'btn btn-outline-danger mx-2 '}
                   >
         
                   <FontAwesomeIcon
-                            icon={product.checked ? faCheck : faCircle}
+                            icon={product.checked ? faCheck :faXmark}
+                            color={product.checked ? 'green' :'red'}
                           ></FontAwesomeIcon>
 
                   </button>
@@ -80,7 +77,6 @@ function Product() {
                       <button className='btn btn-outline-danger'
                       
                       onClick={()=>handleDeleteProduct(product)}
-                      
                       
                       >
                         <FontAwesomeIcon icon={faTrash}></FontAwesomeIcon>
@@ -90,14 +86,8 @@ function Product() {
 
 
         ))}
- 
-
-        
+  
       </tbody>
-
-
-
-
       </table>
       </div>
     </div>
