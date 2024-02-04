@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faCheck,faCircle,faPlus ,faTrash, faXmark} from "@fortawesome/free-solid-svg-icons";
 import axios from 'axios';
 import { checkProduct,deleteProduct, getProducts } from '../app/ProductRepository';
-
+import Swal from 'sweetalert2';
 
 
 
@@ -51,9 +51,44 @@ const handleGetProducts =  () => {
    }).catch(err=>{
     console.log(err)
    })
+}
 
+const handleAddProduct = async () => {
+  const { value: formValues } = await Swal.fire({
+    title: 'Add New Product',
+    html:
+      '<input id="swal-input-name" class="swal2-input" placeholder="Name">' +
+      '<input id="swal-input-price" class="swal2-input" type="number" placeholder="Price"><br/>' +
+      '<label class="m-4 fw-bold">Checked</label><input id="swal-input-checked" type="checkbox" class="swal2-checkbox">',
+    focusConfirm: false,
+    preConfirm: () => {
+      const name = Swal.getPopup().querySelector('#swal-input-name').value;
+      const price = Swal.getPopup().querySelector('#swal-input-price').value;
+      const checked = Swal.getPopup().querySelector('#swal-input-checked').value;
 
- }
+      if (!name || !price || !checked) {
+        Swal.showValidationMessage('All fields are required');
+      }
+
+      return { name, price, checked };
+    }
+  });
+
+  if (formValues) {
+    const { name, price, checked } = formValues;
+
+    const newProduct = {
+      id: 1,
+      name,
+      price: parseFloat(price),
+      checked: checked === 'true'
+    };
+
+    const newProducts = [...products, newProduct];
+    setProducts(newProducts);
+  }
+};
+
 
 
 
@@ -78,7 +113,7 @@ const handleGetProducts =  () => {
         <div className="d-flex justify-content-end mx-2 ">
           <button
             className="btn btn-outline-primary "
-             // Assuming you have a function to handle adding a new product
+             onClick={()=>handleAddProduct()}
           >
             <FontAwesomeIcon icon={faPlus} />
             

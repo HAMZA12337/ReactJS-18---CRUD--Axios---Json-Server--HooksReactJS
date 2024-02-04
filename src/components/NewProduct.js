@@ -1,31 +1,63 @@
-import React, { useEffect } from 'react'
+import React, { useState } from 'react'
 import Swal from 'sweetalert2'
 
 function NewProduct() {
  
-
-
-  const { value: ipAddress } = Swal.fire({
-    title: "Enter your IP address",
-    input: "text",
-    inputLabel: "Your IP address",
-    inputValue:"vf",
-    showCancelButton: true,
-    inputValidator: (value) => {
-      if (!value) {
-        return "You need to write something!";
-      }
-    }
-  });
-  if (ipAddress) {
-    Swal.fire(`Your IP address is ${ipAddress}`);
-  }
-
+  const [name, setName] = useState("");
+  const [price, setPrice] = useState(0);
+  const [checked, setChecked] = useState(false);
+  
 
 
   return (
-    <div>{}</div>
-  )
+    <div className="row p-3">
+      <div className="col-md-6">
+        <div className="card">
+          <div className="card-body">
+            <form method="post">
+              <div className="mb-3">
+                <label htmlFor="name" className="form-label">
+                  Name
+                </label>
+                <input
+                  id="name"
+                  type="text"
+                  className="form-control"
+                  value={name}
+                  
+                ></input>
+              </div>
+              <div className="mb-3">
+                <label htmlFor="price" className="form-label">
+                  Price
+                </label>
+                <input
+                  id="price"
+                  type="text"
+                  className="form-control"
+                  value={price}
+                  
+                ></input>
+              </div>
+              <div className="form-check">
+                <input
+                  className="form-check-input"
+                  type="checkbox"
+                  value={checked}
+                
+                  id="checked"
+                />
+                <label className="form-check-label" htmlFor="checked">
+                  Checked
+                </label>
+              </div>
+              <button className="btn btn-primary">Save</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default NewProduct

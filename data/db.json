@@ -1,16 +1,10 @@
 {
   "products": [
     {
-      "id": "1",
-      "name": "Computer",
-      "price": 12344,
-      "checked": false
-    },
-    {
       "id": "2",
       "name": "Iphone",
       "price": 12344,
-      "checked": false
+      "checked": true
     },
     {
       "id": "3",
@@ -22,7 +16,7 @@
       "id": "4",
       "name": "Battery",
       "price": 12344,
-      "checked": true
+      "checked": false
     }
   ]
 }
