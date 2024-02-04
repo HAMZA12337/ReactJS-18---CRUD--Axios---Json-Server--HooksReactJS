@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import '../App.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faCheck,faCircle,faPlus ,faTrash, faXmark} from "@fortawesome/free-solid-svg-icons";
-import axios from 'axios';
-import { checkProduct,deleteProduct, getProducts } from '../app/ProductRepository';
+import {faCheck,faCircle,faTrash, faXmark} from "@fortawesome/free-solid-svg-icons";
 
 
 
@@ -11,81 +9,45 @@ import { checkProduct,deleteProduct, getProducts } from '../app/ProductRepositor
 
 function Product() {
 
- const [products,setProducts]=useState([]);
+ const [products,setProducts]=useState([
+  {id:1,name:"Computer",price:12333,checked:false},
+  {id:2,name:"Iphone",price:1232,checked:false},
+  {id:3,name:"HeadPhone",price:12,checked:true},
+  {id:4,name:"Battery",price:11,checked:true}
+ ])
 
 
- useEffect(() => {
  
-
-  handleGetProducts(); 
-
-  
-}, []);
-
-const handleGetProducts =  () => {
- 
- getProducts().then(resp=>{
-  setProducts(resp.data)
- })
-  .catch(error => {
-  // Handle error
-  console.error(error);
- })
-};
 
 
  const handleCheckProduct=(product)=>{
 
-
-   checkProduct(product).then(resp=>{
-
-    const newProducts=products.map(prd=>{
+  const newProducts=products.map(prd=>{
    
-     if(prd.id===product.id){
-       prd.checked =  !prd.checked;
-     }
-  return prd;
-   }) 
-   setProducts(newProducts)
+    if(prd.id===product.id){
+      prd.checked =  !prd.checked;
+    }
+ return prd;
+  }) 
 
-   }).catch(err=>{
-    console.log(err)
-   })
-
-
+  setProducts(newProducts)
  }
 
 
 
   const handleDeleteProduct=(product)=>{
 
-     deleteProduct(product).then(resp=>{
-
-      const newProducts=products.filter((prod)=>prod.id !=product.id)
+      const newProducts=products.filter(p=>p.id!=product.id);
       setProducts(newProducts)
-         
-     }).catch(err=>{
-      console.log(err)
-     })
 
   }
 
   return (
     
     <div className="p-1 m-1">
-    <div className="card">
+      <div className="card">
       <div className="card-body">
-        <div className="d-flex justify-content-end mx-2 ">
-          <button
-            className="btn btn-outline-primary "
-             // Assuming you have a function to handle adding a new product
-          >
-            <FontAwesomeIcon icon={faPlus} />
-            
-          </button>
-        </div>
-  
-        <table className="table">
+     <table className='table'>
       <thead>
         <th scope="col">Id</th>
         <th scope="col">Name</th>

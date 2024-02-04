@@ -246,3 +246,37 @@ As a result we get Something like that
 
 
 Developed By: BRAIMI HAMZA :)) 
+
+
+
+{
+  "products": [
+    {
+      "id":"1",
+      "name":"Computer",
+      "price":12344,
+      "checked":false
+  }
+  ,
+    {
+      "id": "2",
+      "name": "Iphone",
+      "price": 12344,
+      "checked": false
+    },
+    {
+      "id":"3",
+      "name":"HeadPhone",
+      "price":12344,
+      "checked":true
+  }
+  ,
+  {
+    "id":"4",
+    "name":"Battery",
+    "price":12344,
+    "checked":true
+}
+
+  ]
+}

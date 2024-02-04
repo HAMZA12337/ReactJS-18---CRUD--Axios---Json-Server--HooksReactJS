@@ -3,7 +3,7 @@ import { BrowserRouter,Route,Routes,Link } from 'react-router-dom';
 import './App.css';
 import Home from './components/Home';
 import Product from './components/Product';
-
+import NewProduct from "./components/NewProduct";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
@@ -57,6 +57,7 @@ useEffect(()=>{
 
 <Route path="/Home" element={<Home/>}> </Route>
 <Route path="/Product" element={<Product/>}> </Route>
+<Route path="/NewProduct" element={<NewProduct/>}> </Route>
 </Routes>
 </BrowserRouter>
 
